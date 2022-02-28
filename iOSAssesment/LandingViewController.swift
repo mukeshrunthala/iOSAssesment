@@ -9,25 +9,47 @@ import UIKit
 
 class LandingViewController : UIViewController , UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    @IBOutlet weak var tabBar: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
-
+    var bookArray: [Book] = []
+    let bookSearch = BookSearch()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        tableView.dataSource = self
-        tableView.delegate = self
-        searchBar.delegate = self
-        tableView.tableFooterView = UIView()
+        tableView.backgroundView = createMessageLabel(message : "Start Your Search")
     }
     
+    // It Returns a UILabel to display on tableview cell
+    func createMessageLabel(message : String) -> UILabel{
+        let messageLabel = UILabel()
+        messageLabel.text = message
+        messageLabel.textAlignment = .center
+        return messageLabel
+    }
 
-//The next two functions pretain to the searchBar
+    //This function search book based upon title returns the parsed JSON
+    func searchBookAction(){
+        bookSearch.searchBooks(keyword: searchBar.text!,
+    emptyCompletion: {
+    tableView.backgroundView = createMessageLabel(message : "Start Your Search")
+    bookArray = []
+    tableView.reloadData()
+    }, searchCompletion: {[weak self] object in
+    self?.bookArray = object.docs
+    if(self?.bookArray.count == 0) {
+        let message = "No result found for " + (self?.searchBar.text ?? "")
+        self?.tableView.backgroundView = self?.createMessageLabel(message : message)
+    }
+    else {
+    self?.tableView.backgroundView = nil
+    }
+    self?.tableView.reloadData()
+    })
+    }
+    
+//Search bar delegates
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
+        self.searchBookAction()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -35,9 +57,9 @@ class LandingViewController : UIViewController , UITableViewDataSource, UITableV
     }
 
     
- //Standard Table View Functions
+ //Standard Table View Delegates
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return bookArray.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,6 +68,8 @@ class LandingViewController : UIViewController , UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! BookCell
+        let book = bookArray[indexPath.row]
+        cell.setBookData(book: book)
         return cell
     }
 }

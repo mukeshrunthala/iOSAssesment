@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="pdv-4T-7HJ" customClass="BookCell" customModule="iOSAssesment" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="pdv-4T-7HJ" customClass="BookCell" customModule="iOSAssesment" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pdv-4T-7HJ" id="gkK-sx-1QE">
@@ -106,7 +106,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search Book" leftItemsSupplementBackButton="YES" id="4j3-FZ-m3P">
                         <barButtonItem key="backBarButtonItem" title="back" id="yXD-Ke-OJk"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="6UA-QU-SJK"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="oCo-ls-zoe" id="b08-bH-9rH"/>
