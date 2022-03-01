@@ -10,24 +10,30 @@ import XCTest
 
 class iOSAssesmentTests: XCTestCase {
 
+    var landingVC : LandingViewController!
+    var navigationController : UINavigationController!
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        landingVC = storyboard.instantiateViewController(
+            withIdentifier: "LandingViewController")
+        as? LandingViewController
+        
+        navigationController = UINavigationController(rootViewController: landingVC)
+        navigationController.loadViewIfNeeded()
+        landingVC.loadViewIfNeeded()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSearchBarAvailable() {
+         XCTAssertNotNil(landingVC.searchBar)
+     }
+     
+     func testShouldSetSearchBarDelegate() {
+         XCTAssertNotNil(landingVC.searchBar.delegate)
+     }
+    func testShouldSetTableViewDelegate() {
+        XCTAssertNotNil(landingVC.tableView.delegate)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
+
