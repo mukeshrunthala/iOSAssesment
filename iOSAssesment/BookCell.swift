@@ -20,12 +20,12 @@ class BookCell: UITableViewCell {
         if(title != nil){
             self.title.text = book.title_suggest
         }
-        if let author = book.author_name {
+        if let author = book.author_name as? [String]  {
             if(author.count>0){
                 self.author.text = author[0]
-                for (i, c) in (author.enumerated()){
+                for (i, j) in (author.enumerated()){
                     if(i>0){
-                        self.author.text = self.author.text! + ", " + c
+                        self.author.text = self.author.text! + ", " + j
                     }
                 }
             }
