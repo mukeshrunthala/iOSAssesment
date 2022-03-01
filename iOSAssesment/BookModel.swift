@@ -10,12 +10,21 @@
 import Foundation
 
 struct Book: Decodable{
-    let title_suggest: String?
-    let author_name: [String]?
-    let first_publish_year: Int?
-    let cover_i: Int?
+    var title_suggest: String?
+    var author_name: [String?]
+    var first_publish_year: Int?
+    var cover_i: Int?
+    var key: String?
+    
+    init(book : BookTable) {
+        title_suggest = book.title_suggest
+        author_name = [book.author]
+        first_publish_year = Int(book.publishDate)
+        cover_i = Int(book.cover_i)
+        key = book.key
+        }
 }
-struct BookObject: Decodable{
+struct BookObject: Decodable {
     let start: Int?
     let num_found: Int?
     let docs: [Book]

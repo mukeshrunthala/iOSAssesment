@@ -35,7 +35,7 @@ class LandingViewController : UIViewController , UITableViewDataSource, UITableV
     bookArray = []
     tableView.reloadData()
     }, searchCompletion: {[weak self] object in
-    self?.bookArray = object.docs
+        self?.bookArray = object
     if(self?.bookArray.count == 0) {
         let message = "No result found for " + (self?.searchBar.text ?? "")
         self?.tableView.backgroundView = self?.createMessageLabel(message : message)
