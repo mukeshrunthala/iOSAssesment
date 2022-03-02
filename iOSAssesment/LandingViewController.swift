@@ -3,7 +3,7 @@
 //  iOSAssesment
 //
 //  Created by Mukesh Sharma on 28/02/22.
-//
+
 
 import UIKit
 
@@ -53,7 +53,7 @@ class LandingViewController : UIViewController , UITableViewDataSource, UITableV
         searchBar.resignFirstResponder()
     }
     
- //Standard Table View Delegates
+ // Table View Delegates
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return bookArray.count
     }

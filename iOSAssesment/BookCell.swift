@@ -1,10 +1,9 @@
 //
 //  TableViewCell.swift
-//  Library_API_Case_Study
+//  iOSAssesment
 //
-//  Created by Anthony Rubin on 4/12/19.
-//  Copyright © 2019 Anthony Rubin. All rights reserved.
-//
+//  Created by Mukesh on 28/02/2022.
+
 
 import UIKit
 
@@ -14,8 +13,9 @@ class BookCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var publishDate: UILabel!
-    let imgBaseURL = "https://covers.openlibrary.org/b/id/"
+    let imgBaseURL = "https://covers.openlibrary.org/b/id/" // Base Url too fetch book image
     
+    // This function will bind the book data with tableview cell
     func setBookData(book: Book){
         if(title != nil){
             self.title.text = book.title_suggest
@@ -41,10 +41,12 @@ class BookCell: UITableViewCell {
 
     }
     
+    // This function will add a placeholder Images
     func imgNotFound(){
         self.bookImage.image = UIImage(named: "book")
     }
     
+    //This function will fetch image from openLibrary server
     func getImage(cover_i: Int){
         let url = imgBaseURL + "\(cover_i)" + "-M.jpg"
         //check that url is valid
