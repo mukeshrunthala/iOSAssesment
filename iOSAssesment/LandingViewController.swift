@@ -28,7 +28,7 @@ class LandingViewController : UIViewController , UITableViewDataSource, UITableV
     }
 
     //This function search book based upon title returns the parsed JSON
-    func searchBookAction(){
+   @IBAction func searchBookAction(){
         bookSearch.searchBooks(keyword: searchBar.text!,
     emptyCompletion: {
     tableView.backgroundView = createMessageLabel(message : "Start Your Search")
@@ -48,14 +48,10 @@ class LandingViewController : UIViewController , UITableViewDataSource, UITableV
     }
     
 //Search bar delegates
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchBookAction()
-    }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-
     
  //Standard Table View Delegates
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
