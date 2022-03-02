@@ -1,12 +1,10 @@
 //
 //  Book.swift
-//  Library_API_Case_Study
+//  iOSAssesment
 //
-//  Created by Anthony Rubin on 4/12/19.
-//  Copyright © 2019 Anthony Rubin. All rights reserved.
-//
+//  Created by Mukesh on 28/02/2022.
+
 //all of the decodable structs can be found here
-//these structs are the bones of the JSON Parsing
 import Foundation
 
 struct Book: Decodable{
